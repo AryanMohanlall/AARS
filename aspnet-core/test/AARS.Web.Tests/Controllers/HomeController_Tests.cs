@@ -1,0 +1,28 @@
+﻿using AARS.Models.TokenAuth;
+using AARS.Web.Controllers;
+using Shouldly;
+using System.Threading.Tasks;
+using Xunit;
+
+namespace AARS.Web.Tests.Controllers;
+
+public class HomeController_Tests : AARSWebTestBase
+{
+    [Fact]
+    public async Task Index_Test()
+    {
+        await AuthenticateAsync(null, new AuthenticateModel
+        {
+            UserNameOrEmailAddress = "admin",
+            Password = "123qwe"
+        });
+
+        //Act
+        var response = await GetResponseAsStringAsync(
+            GetUrl<HomeController>(nameof(HomeController.Index))
+        );
+
+        //Assert
+        response.ShouldNotBeNullOrEmpty();
+    }
+}
