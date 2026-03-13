@@ -37,6 +37,8 @@ namespace AARS.Web.Host.Startup
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpContextAccessor();
+
             //MVC
             services.AddControllersWithViews(options =>
             {
