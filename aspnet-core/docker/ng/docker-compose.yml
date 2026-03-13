@@ -3,10 +3,13 @@ version: '3'
 services:
 
   abp_host:
-    image: abp/host
+    image: abp/host:local
+    build:
+      context: ../..
+      dockerfile: src/AARS.Web.Host/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: "Staging"
-      ConnectionStrings__Default: "Server=host.docker.internal;Database=AARSDb;User=sa;Password=@123Shesha;TrustServerCertificate=True;"
+      ConnectionStrings__Default: "${ConnectionStrings__Default}"
       App__ServerRootAddress: "http://localhost:44311/"
       App__ClientRootAddress: "http://localhost:4200/"
       App__CorsOrigins: "http://localhost:4200"

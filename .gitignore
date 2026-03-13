@@ -10,3 +10,5 @@ aspnet-core/src/AARS.Migrator/Logs/Logs.txt
 aspnet-core/build/outputs/
 aspnet-core/docker/mvc/Mvc-Logs/
 
+*/*.env
+/aspnet-core/docker/ng/.env
